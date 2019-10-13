@@ -1,15 +1,14 @@
 CC 		= g++
-LIBS 	=
 CFLAGS= -Wall -std=c++11 -Wextra -Werror
 SRC		=	src
 SOURCES	:=$(wildcard $(SRC)/*.cpp)
 OBJS		:= $(SOURCES:$(SRC)/%.cpp=obj/%.o)
-CLIB =-L/home/compphys/wuma8935/custemlib/lib64/ -L.
-CINC =-I/home/compphys/wuma8935/custemlib/include/
+CLIB =-L. -L${GTEST_LIB} 
+CINC =-I${GTEST_INC}
 LIBNAME	=libtools.a
 
 $(LIBNAME): $(OBJS)
-	ar rcs $@ $(OBJS)
+	ar crv $@ $(OBJS)
 
 .PHONY:test
 test: $(OBJS) $(LIBNAME)
