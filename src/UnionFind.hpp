@@ -13,4 +13,5 @@ public:
   std::vector<long> ClusterSize();
   long Label(long *label);
   long size();
+  bool Singleton(long x);
 };
