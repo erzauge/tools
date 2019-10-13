@@ -82,7 +82,7 @@ std::ostream& operator<<(std::ostream& os, const Histogram& H)
     for (size_t i = 0; i < H.bins; i++) {
       double d=H.range[i+1]-H.range[i];
       double p=H.bin[i]/(H.normalise*d);
-      os << H.range[i] << "\t" << H.range[i+1] << "\t" << p << std::sqrt(p*(1-p)/(H.normalise-1)) << "\n";
+      os << H.range[i] << "\t" << H.range[i+1] << "\t" << p << std::sqrt(p*d*(1-p*d)/(H.normalise))/d << "\n";
     }
     return os;
 }
